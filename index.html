@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asikhulume</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#111827}
+header{background:#111827;color:white;padding:18px;text-align:center}
+main{max-width:650px;margin:18px auto;padding:0 12px}
+.card{background:white;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px #0001}
+textarea{width:100%;min-height:90px;box-sizing:border-box;padding:12px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+button{border:0;border-radius:9px;padding:11px 15px;margin:8px 5px 0 0;font-weight:bold}
+.post{background:#111827;color:white;width:100%}
+.actions button{background:#eef0f3}
+.name{font-weight:bold}.small{color:#667085;font-size:13px}
+</style>
+</head>
+<body>
+<header><h1>Asikhulume 🇿🇦</h1><div>Connect. Share. Talk.</div></header>
+<main>
+<section class="card">
+<textarea id="text" placeholder="What's on your mind?"></textarea>
+<button class="post" onclick="addPost()">Post</button>
+</section>
+<div id="feed">
+<section class="card">
+<div class="name">Welcome to Asikhulume</div>
+<div class="small">Your social feed starts here.</div>
+<p>Share your thoughts and connect with people.</p>
+<div class="actions">
+<button onclick="like(this)">❤️ Like</button>
+<button onclick="comment()">💬 Comment</button>
+<button onclick="voice()">🎤 Voice note</button>
+</div>
+</section>
+</div>
+</main>
+<script>
+function addPost(){
+ const t=document.getElementById('text').value.trim(); if(!t)return;
+ const d=document.createElement('section'); d.className='card';
+ d.innerHTML='<div class="name">Asikhulume User</div><div class="small">Just now</div><p></p><div class="actions"><button onclick="like(this)">❤️ Like</button><button onclick="comment()">💬 Comment</button><button onclick="voice()">🎤 Voice note</button></div>';
+ d.querySelector('p').textContent=t;
+ document.getElementById('feed').prepend(d); document.getElementById('text').value='';
+}
+function like(b){b.textContent='❤️ Liked'}
+function comment(){alert('Text comments will be connected next.')}
+function voice(){alert('Voice-note comments will be connected next.')}
+</script>
+</body>
+</html>
